@@ -6,3 +6,4 @@ This is a readme file for the - SmartTaskPrioritiserApp
 
 3. Going further I plan to add more features! Please let me know if you have ideas on how to make this app better.
 
+This is the link to the app: https://smarttaskprioritizer-deba.streamlit.app/
