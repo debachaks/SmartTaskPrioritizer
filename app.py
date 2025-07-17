@@ -7,14 +7,66 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# 💅 Custom CSS for better UI
 st.markdown(
     """
     <style>
-    body {
-        background-color: #e8f4fc;
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+    html, body, .stApp {
+        font-family: 'Inter', 'Segoe UI', sans-serif;
+        background-color: #f7f9fc;
+        color: #1f2937;
     }
-    .stApp {
-        background-color: #e8f4fc;
+
+    .stTextArea textarea {
+        background-color: #ffffff;
+        color: #1f2937;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        font-size: 16px;
+    }
+
+    .stButton>button {
+        background-color: #3b82f6;
+        color: white;
+        font-weight: 600;
+        border-radius: 8px;
+        padding: 8px 16px;
+        font-size: 16px;
+    }
+
+    .stButton>button:hover {
+        background-color: #2563eb;
+    }
+
+    .stSidebar {
+        background-color: #1e293b;
+        color: white;
+    }
+
+    .stSidebar .css-1d391kg {
+        color: white !important;
+    }
+
+    .stSlider > div[data-baseweb="slider"] {
+        background-color: #64748b;
+    }
+
+    .stSelectbox {
+        font-size: 16px;
+    }
+
+    h1, h2, h3, .stMarkdown h1, .stMarkdown h2 {
+        color: #111827;
+    }
+
+    .task-output-box {
+        background-color: #eef2f7;
+        padding: 15px;
+        border-radius: 10px;
+        font-size: 15px;
+        color: #1f2937;
     }
     </style>
     """,
@@ -38,7 +90,6 @@ api_key = os.getenv("OPENAI_API_KEY")
 # Initialize LLM and memory
 llm = ChatOpenAI(openai_api_key=api_key, temperature=0.7)
 memory = ConversationBufferMemory(return_messages=True, input_key="input")
-
 
 # 🥳 Show welcome toast only once per session
 if "greeted" not in st.session_state:
@@ -96,7 +147,7 @@ if st.button("🧠 Prioritize Tasks"):
 
         st.success("✅ Prioritization Complete!")
         st.markdown("### 📌 Prioritized To-Do List")
-        st.markdown(f"""<div style='background-color: #f0f2f6; padding: 15px; border-radius: 10px;'>{result.content}</div>""", unsafe_allow_html=True)
+        st.markdown(f"""<div class='task-output-box'>{result.content}</div>""", unsafe_allow_html=True)
 
         memory.save_context(
             {"input": user_input_combined},
