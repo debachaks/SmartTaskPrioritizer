@@ -1,4 +1,6 @@
 This is a readme file for the - SmartTaskPrioritiserApp
+<img width="1919" height="826" alt="image" src="https://github.com/user-attachments/assets/9295679e-28f9-49e6-8f11-29d561d6b069" />
+
 
 1. Currently it is a simple app built with the help of Streamlit for the UI, and an LLM is integrated and prompted properly to give appropriate responses. The LLM integration was done using the very powerful and easy to use LangChain Framework.
 
